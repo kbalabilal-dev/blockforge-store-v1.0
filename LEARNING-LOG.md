@@ -8,6 +8,10 @@
 - leanred how to manipulate styles using js 
 ## 15th day:
 -make the buttons rest after the click 
+-images added to the project 
+-pushed to github using GIT and VS code terminal and hosted in netlify 
 ## Parking lot (not today)
 - Event object, classList, dialog, ...
-## cantenue : 
+## cantenue :
+-add keys  
+-add filter tab to switch between ranks and keys 

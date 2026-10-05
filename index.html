@@ -7,24 +7,25 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <div class="top-bar">
+
+  <header class="site-header">
+    <h1 class="server-name">BlockForge</h1>
     <button id="ip-btn" class="ip-button">
       <span class="ip-label">Server IP:</span> <span class="IP">play.blockforge.net</span>
     </button>
-  </div>
-  <header class="site-header">
-    <h1 class="server-name">BlockForge</h1>
-    <p class="tagline">Ranks for the survival server</p>
   </header>
 
   <main>
     <div class="category-tabs">
-      <button class="tab-btn active"  data-category="Ranks">Ranks</button>
+      <button class="tab-btn active" data-category="Ranks">Ranks</button>
       <button class="tab-btn" data-category="Keys">Keys</button>
     </div>
-    <section class="package-grid" id="package-grid">
-    </section>
+    <section class="package-grid" id="package-grid"></section>
   </main>
+
+  <footer class="site-footer">
+    <p class="tagline">block forge store</p>
+  </footer>
 
   <script src="index.js"></script>
 </body>

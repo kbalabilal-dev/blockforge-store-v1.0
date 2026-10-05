@@ -7,11 +7,15 @@
 - testing new cards and adding event listener and use e.target property 
 - leanred how to manipulate styles using js 
 ## 15th day:
--make the buttons rest after the click 
--images added to the project 
--pushed to github using GIT and VS code terminal and hosted in netlify 
+- make the buttons rest after the click 
+- images added to the project 
+- pushed to github using GIT and VS code terminal and hosted in netlify 
+## 16th day:
+- filter buttons added 
+- i leaned about arrow functions and filter and foreach methods
+- version 1.0.2 deployed  
 ## Parking lot (not today)
 - Event object, classList, dialog, ...
 ## cantenue :
--add keys  
--add filter tab to switch between ranks and keys 
+-add info key on each card 
+-seperate packages from index.js  

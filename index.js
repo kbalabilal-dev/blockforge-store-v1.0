@@ -20,7 +20,7 @@ const tabBtns = document.querySelectorAll(".tab-btn");
 let ipNow = ip.textContent;
 
 function renderPackages(itemArray) {
-    section.innerHTML = ""; // Always clear grid before rendering new cards
+    section.innerHTML = "";
 
     for (let i = 0; i < itemArray.length; i++) {
         let article = document.createElement("article");
@@ -33,13 +33,23 @@ function renderPackages(itemArray) {
         let icons = document.createElement("img");
         icons.src = itemArray[i].icon;
 
+        let btnContainer = document.createElement("div")
+        btnContainer.classList.add("card-actions")
+
+        let infoBtns = document.createElement("button")
+        infoBtns.classList.add("info-button")
+        infoBtns.textContent = "i"
+
         let btns = document.createElement("button");
         btns.classList.add("buy-button");
         btns.textContent = itemArray[i].price + "$";
 
+        btnContainer.appendChild(infoBtns)
+        btnContainer.appendChild(btns)
+
         article.appendChild(names);
         article.appendChild(icons);
-        article.appendChild(btns);
+        article.appendChild(btnContainer);
         section.appendChild(article);
 
         btns.addEventListener("click", function(e) {
@@ -53,7 +63,6 @@ function renderPackages(itemArray) {
     }
 }
 
-// Initial render: show Ranks first to match the default active tab
 renderPackages(packages.filter(item => item.category === "Ranks"));
 
 tabBtns.forEach(btn => {
@@ -75,6 +84,6 @@ copyBtn.addEventListener("click", function() {
     }, 2000);
 });
 
-header.textContent += " v1.0.2";
+header.textContent += " v1.0.3";
 
 

@@ -22,19 +22,30 @@ body {
 }
 
 .site-header {
-  text-align: center;
-  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
 }
+
 
 .server-name {
   font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.02em;
+  line-height: 1;
 }
+
 
 .tagline {
   color: var(--muted);
-  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  background: rgba(24, 28, 39, 0.8);
+  padding: 0.35rem 0.75rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;  
 }
 
 .package-grid {
@@ -68,14 +79,12 @@ body {
 }
 
 .buy-button {
-  margin-top: auto;
-  width: 100%;
+  flex: 1; 
   padding: 0.75rem 1rem;
   border: none;
   border-radius: 8px;
   background: var(--accent);
   color: var(--accent-dark);
-  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
 }
@@ -93,22 +102,50 @@ body {
   justify-content: center;
   margin-bottom: 2rem;
 }
+.info-button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #323a4f;
+  border-radius: 8px;
+  background: #2b3345;
+  color: var(--text);
+
+  font-family: "Georgia", "Courier New", "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.info-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
 
 .ip-button {
   background: var(--surface);
   color: var(--text);
-  border: 3px solid #323a4f;
+  border: 2px solid #323a4f;
   padding: 0.5rem 1.25rem;
-  border-radius: 999px; /* Pill shape */
+  border-radius: 999px;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
+  margin-top: 20px;
   transition: border-color 0.2s, background-color 0.2s;
 }
-
 .ip-button:hover {
   background: #2b3345;
   border-color: var(--accent);
+}
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: auto; 
 }
 
 .ip-label {

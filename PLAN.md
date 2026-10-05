@@ -5,8 +5,8 @@
 | 1 | Cards created from the packages array (`createElement`, `classList.add`, `appendChild`, loop) | DONE |
 | 2 | Buttons work on the new cards (`addEventListener`, event object, copy IP button) | DONE |
 | 3 | Custom SVG icons per package + direct price buy buttons | DONE |
-| 4 | Category tabs filtering (Ranks, Keys, etc. using `filter` / functions) | NEXT |
-| 5 | Package details modal/pop-up (Description + Minecraft username input) | |
+| 4 | Category tabs filtering (Ranks, Keys, etc. using `filter` / functions) | DONE |
+| 5 | Package details modal/pop-up (Description + Minecraft username input) |NEXT |
 | 6 | Move data into `data.json` + `fetch` / `async-await` + loading/error states | |
 | 7 | Responsive layout (mobile friendly) + deployment on Vercel/Netlify | |
 | 8 | Real Tebex Headless API integration (categories, packages, icons) | |

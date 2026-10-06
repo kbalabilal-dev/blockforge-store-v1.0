@@ -37,7 +37,7 @@ let packages = [
 },
     { id: 4, name: "Elite", price: 29.99, category: "Ranks", icon: "images/ELITE.svg",
     description : 
-        `<p class="desc-p">improve your survival skills with LEGEND rank:</p>
+        `<p class="desc-p">improve your survival skills with ELITE rank:</p>
         <ul class="desc-ul">
             <li class="desc-li">fly in spawn</li>
             <li class="desc-li">ELITE kit access</li>
@@ -95,12 +95,12 @@ let packages = [
 
     { id: 9, name: "Elite Key x1", price: 9.99, category: "Keys", icon: "images/ELITE.png",
     description : 
-        `<p class="desc-p">With the rare key you can open the rare crate wich contains:</p>
+        `<p class="desc-p">With the elite key you can open the elite crate wich contains:</p>
         <ul class="desc-ul">
             <li class="desc-li">forge pickaxe (breaks 3 x 3)</li>
             <li class="desc-li">forge shovel (breaks 3 x 3</li>
             <li class="desc-li">forge hoe (plants 3 x 3)</li>
-            <li class="desc-li">froge axe (breaks a full tree at once</li>
+            <li class="desc-li">froge axe (breaks a full tree at once)</li>
         </ul>`  
 }
 ];

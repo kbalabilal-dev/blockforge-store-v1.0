@@ -13,9 +13,14 @@
 ## 16th day:
 - filter buttons added 
 - i leaned about arrow functions and filter and foreach methods
-- version 1.0.2 deployed  
+- version 1.0.2 deployed 
+- changing some styling 
+## 17th day:
+- info button added 
+- pop up modal added suing AI 
+- making the modal button do the same job as the regular one 
 ## Parking lot (not today)
 - Event object, classList, dialog, ...
 ## cantenue :
--add info key on each card 
--seperate packages from index.js  
+-clean the code 
+-move to stage 6 

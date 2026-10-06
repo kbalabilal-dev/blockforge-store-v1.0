@@ -1,22 +1,13 @@
 console.log("index.js is connected");
 
-let packages = [
-    { id: 1, name: "VIP", price: 4.99, category: "Ranks", icon: "images/VIP.svg" },
-    { id: 2, name: "MVP", price: 11.99, category: "Ranks", icon: "images/MVP.svg" },
-    { id: 3, name: "Legend", price: 24.99, category: "Ranks", icon: "images/LEGEND.svg" },
-    { id: 4, name: "Elite", price: 29.99, category: "Ranks", icon: "images/ELITE.svg" },
-    { id: 5, name: "Common Key x5", price: 0.99, category: "Keys", icon: "images/common.png" },
-    { id: 6, name: "Rare Key x5", price: 1.99, category: "Keys", icon: "images/rare.png" },
-    { id: 7, name: "Prime Key x5", price: 3.99, category: "Keys", icon: "images/prime.png" },
-    { id: 8, name: "crimson Key x3", price: 4.99, category: "Keys", icon: "images/crimson.png" },
-    { id: 9, name: "Elite Key x1", price: 9.99, category: "Keys", icon: "images/ELITE.png" }
-];
-
 const section = document.querySelector(".package-grid");
 const header = document.querySelector(".tagline");
 const copyBtn = document.querySelector("#ip-btn");
 const ip = document.querySelector(".IP");
 const tabBtns = document.querySelectorAll(".tab-btn");
+const modal = document.querySelector("#package-modal");
+const closeModalBtn = document.querySelector("#close-modal");
+const buyModalBtn = document.querySelector("#modal-buy-btn")
 let ipNow = ip.textContent;
 
 function renderPackages(itemArray) {
@@ -60,8 +51,45 @@ function renderPackages(itemArray) {
                 }, 1500);
             }
         });
+        infoBtns.addEventListener("click", function() {
+            document.querySelector("#modal-img").src = itemArray[i].icon;
+            document.querySelector("#modal-title").textContent = itemArray[i].name;
+            document.querySelector("#modal-desc").innerHTML = itemArray[i].description;
+            document.querySelector("#modal-buy-btn").textContent = itemArray[i].price + "$";
+            
+            modal.showModal();
+        });
     }
 }
+
+
+
+renderPackages(packages.filter(item => item.category === "Ranks"));
+
+tabBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+        tabBtns.forEach(remove => remove.classList.remove("active"));
+        btn.classList.add("active");
+
+        let btncate = btn.dataset.category;
+        const filterd = packages.filter(item => item.category === btncate);
+        renderPackages(filterd);
+    });
+});
+closeModalBtn.addEventListener("click", function() {
+    modal.close();
+});
+modal.addEventListener("click", function(e) {
+    const dialogDimensions = modal.getBoundingClientRect();
+    if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+    ) {
+        modal.close();
+    }
+});
 
 renderPackages(packages.filter(item => item.category === "Ranks"));
 
@@ -76,6 +104,14 @@ tabBtns.forEach(btn => {
     });
 });
 
+buyModalBtn.addEventListener("click",e => {
+    const priceModal = buyModalBtn.textContent
+    buyModalBtn.textContent = "loading.."
+    setTimeout(() => {
+        buyModalBtn.textContent = priceModal
+    }, 1500);
+    
+})
 copyBtn.addEventListener("click", function() {
     navigator.clipboard.writeText(ipNow);
     ip.textContent = "copied!";

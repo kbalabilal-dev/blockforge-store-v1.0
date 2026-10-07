@@ -173,7 +173,7 @@ loginForm.addEventListener("submit", function(e) {
     const mcRegex = /^[a-zA-Z0-9_]{3,16}$/;
     
     if (!mcRegex.test(enteredUsername)) {
-        loginError.textContent = "Please enter a valid Minecraft username";
+        loginError.textContent = "Please enter a valid username";
         
         loginError.classList.remove("show");
         

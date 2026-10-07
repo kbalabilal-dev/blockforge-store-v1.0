@@ -19,8 +19,12 @@
 - info button added 
 - pop up modal added suing AI 
 - making the modal button do the same job as the regular one 
+## 18th day:
+- removing packges.js from the project 
+- adding data.JSON to  fetch data
+- fetch DATA using async/await 
+- hundling data pipline flow and rendring order
 ## Parking lot (not today)
 - Event object, classList, dialog, ...
 ## cantenue :
--clean the code 
--move to stage 6 
+-work with real tebex data

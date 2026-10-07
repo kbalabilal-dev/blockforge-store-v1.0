@@ -1,5 +1,5 @@
 console.log("index.js is connected");
-
+let appdata = null
 const section = document.querySelector(".package-grid");
 const header = document.querySelector(".tagline");
 const copyBtn = document.querySelector("#ip-btn");
@@ -9,6 +9,23 @@ const modal = document.querySelector("#package-modal");
 const closeModalBtn = document.querySelector("#close-modal");
 const buyModalBtn = document.querySelector("#modal-buy-btn")
 let ipNow = ip.textContent;
+
+
+async function checkFetch(){
+    try{
+        const respond = await fetch("./data.json")
+        if (respond.ok === true){
+            const result =await respond.json()
+            console.log(result)
+            appdata = result
+            renderPackages(appdata.data.filter(item => item.category.name === "Ranks"));
+        
+        }else{console.log("the respond faild")}
+    }catch (error){
+        console.log("there's an error",error)
+    }
+}
+checkFetch()
 
 function renderPackages(itemArray) {
     section.innerHTML = "";
@@ -21,8 +38,8 @@ function renderPackages(itemArray) {
         names.classList.add("package-name");
         names.textContent = itemArray[i].name;
 
-        let icons = document.createElement("img");
-        icons.src = itemArray[i].icon;
+        let images = document.createElement("img");
+        images.src = itemArray[i].image;
 
         let btnContainer = document.createElement("div")
         btnContainer.classList.add("card-actions")
@@ -39,7 +56,7 @@ function renderPackages(itemArray) {
         btnContainer.appendChild(btns)
 
         article.appendChild(names);
-        article.appendChild(icons);
+        article.appendChild(images);
         article.appendChild(btnContainer);
         section.appendChild(article);
 
@@ -52,30 +69,18 @@ function renderPackages(itemArray) {
             }
         });
         infoBtns.addEventListener("click", function() {
-            document.querySelector("#modal-img").src = itemArray[i].icon;
+            document.querySelector("#modal-img").src = itemArray[i].image;
             document.querySelector("#modal-title").textContent = itemArray[i].name;
             document.querySelector("#modal-desc").innerHTML = itemArray[i].description;
             document.querySelector("#modal-buy-btn").textContent = itemArray[i].price + "$";
             
             modal.showModal();
+            buyModalBtn.textContent = itemArray[i].price + "$"
         });
     }
 }
 
 
-
-renderPackages(packages.filter(item => item.category === "Ranks"));
-
-tabBtns.forEach(btn => {
-    btn.addEventListener("click", function() {
-        tabBtns.forEach(remove => remove.classList.remove("active"));
-        btn.classList.add("active");
-
-        let btncate = btn.dataset.category;
-        const filterd = packages.filter(item => item.category === btncate);
-        renderPackages(filterd);
-    });
-});
 closeModalBtn.addEventListener("click", function() {
     modal.close();
 });
@@ -91,7 +96,6 @@ modal.addEventListener("click", function(e) {
     }
 });
 
-renderPackages(packages.filter(item => item.category === "Ranks"));
 
 tabBtns.forEach(btn => {
     btn.addEventListener("click", function() {
@@ -99,7 +103,7 @@ tabBtns.forEach(btn => {
         btn.classList.add("active");
 
         let btncate = btn.dataset.category;
-        const filterd = packages.filter(item => item.category === btncate);
+        const filterd = appdata.data.filter(item => item.category.name === btncate);
         renderPackages(filterd);
     });
 });
@@ -121,5 +125,3 @@ copyBtn.addEventListener("click", function() {
 });
 
 header.textContent += " v1.0.4";
-
-

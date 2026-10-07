@@ -1,46 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BlockForge Store</title>
-  <link rel="stylesheet" href="index.css">
-  <script src="index.js" defer></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BlockForge Store</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+  </head>
+  <body>
 
-  <header class="site-header">
-    <h1 class="server-name">BlockForge</h1>
-    <button id="ip-btn" class="ip-button">
-      <span class="ip-label">Server IP:</span> <span class="IP">play.blockforge.net</span>
-    </button>
-  </header>
+    <header class="site-header">
+      <h1 class="server-name">BlockForge</h1>
+      <button id="ip-btn" class="ip-button">
+        <span class="ip-label">Server IP:</span> <span class="IP">play.blockforge.net</span>
+      </button>
+    </header>
 
-  <main>
-    <div class="category-tabs">
-      <button class="tab-btn active" data-category="Ranks">Ranks</button>
-      <button class="tab-btn" data-category="Keys">Keys</button>
-    </div>
-    <section class="package-grid" id="package-grid"></section>
-  </main>
-
-  <footer class="site-footer">
-    <p class="tagline">block forge store</p>
-  </footer>
-
-  <dialog id="package-modal">
-    <button id="close-modal" class="close-modal">&times;</button>
-    
-    <div class="modal-body">
-      <img id="modal-img" src="" alt="Package Icon">
-      <div class="modal-info">
-        <h2 id="modal-title"></h2>
-        <div id="modal-desc"></div>
-        <button id="modal-buy-btn" class="buy-button"></button>
+    <main>
+      <div class="category-tabs">
+        <button class="tab-btn active" data-category="Ranks">Ranks</button>
+        <button class="tab-btn" data-category="Keys">Keys</button>
       </div>
-    </div>
-  </dialog>
+      <section class="package-grid" id="package-grid"></section>
+    </main>
 
-  
-</body>
+    <footer class="site-footer">
+      <p class="tagline">block forge store</p>
+    </footer>
+
+    <dialog id="package-modal" class="modal-dialog">
+      <button id="close-modal" class="close-modal">&times;</button>
+      
+      <div class="modal-body">
+        <img id="modal-img" src="" alt="Package Icon">
+        <div class="modal-info">
+          <h2 id="modal-title"></h2>
+          <div id="modal-desc"></div>
+          <button id="modal-buy-btn" class="buy-button"></button>
+        </div>
+      </div>
+    </dialog>
+    <dialog id="login-modal" class="modal-dialog">
+      <button id="close-login" class="close-modal">&times;</button>
+
+      <div class="login-modal-content">
+        <h2>Enter Your Username</h2>
+        <p class="login-desc">Enter your exact Minecraft username to continue.</p>
+        <form id="login-form">
+            <input 
+            type="text" 
+            id="username-input" 
+            placeholder="Minecraft username (e.g. Steve)" 
+            required 
+            autocomplete="off"
+            minlength="3"
+            maxlength="16"
+            >
+        
+        <button type="submit" id="confirm-login-btn" class="buy-button">Continue</button>
+        </form>
+      </div>
+    </dialog>
+
+    
+  </body>
 </html>

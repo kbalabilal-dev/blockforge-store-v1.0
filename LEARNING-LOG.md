@@ -24,6 +24,8 @@
 - adding data.JSON to  fetch data
 - fetch DATA using async/await 
 - hundling data pipline flow and rendring order
+- creating login pop up 
+- checking if the input is valid 
 ## Parking lot (not today)
 - Event object, classList, dialog, ...
 ## cantenue :

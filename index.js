@@ -124,4 +124,4 @@ copyBtn.addEventListener("click", function() {
     }, 2000);
 });
 
-header.textContent += " v1.0.4";
+header.textContent += " v1.0.5";

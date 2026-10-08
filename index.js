@@ -30,10 +30,14 @@ let ipNow = ip.textContent;
 
 async function checkFetch(){
     try{
-        const respond = await fetch("./data.json")
+        const respond = await fetch("https://headless.tebex.io/api/accounts/14s8d-f1ca42c72668b958cc37af87a9340635307e4cf6/packages")
         if (respond.ok === true){
             const result =await respond.json()
             appdata = result
+            for (let i = 0;i < imagesrc.length; i++){
+                appdata.data[i].image = imagesrc[i]
+            }
+            console.log(appdata)
             renderPackages(appdata.data.filter(item => item.category.name === "Ranks"));
         
         }else{
@@ -42,6 +46,9 @@ async function checkFetch(){
     }catch (error){
         console.log("there's an error",error)
     }
+
+
+
 }
 checkFetch()
 
@@ -58,6 +65,7 @@ function renderPackages(itemArray) {
 
         let images = document.createElement("img");
         images.src = itemArray[i].image;
+        console.log(itemArray[i].image)
 
         let btnContainer = document.createElement("div")
         btnContainer.classList.add("card-actions")
@@ -68,7 +76,7 @@ function renderPackages(itemArray) {
 
         let buyBtn = document.createElement("button");
         buyBtn.classList.add("buy-button");
-        buyBtn.textContent = itemArray[i].price + "$";
+        buyBtn.textContent = itemArray[i].base_price + "$";
 
         btnContainer.appendChild(infoBtns)
         btnContainer.appendChild(buyBtn)
@@ -84,7 +92,7 @@ function renderPackages(itemArray) {
                 selectedPackageId = itemArray[i].id
                 e.target.textContent = "loading..";
                 setTimeout(() => {
-                    e.target.textContent = itemArray[i].price + "$";
+                    e.target.textContent = itemArray[i].base_price + "$";
                 }, 1500);
             }
         });
@@ -200,5 +208,4 @@ function openLogin() {
     
 }
 
-header.textContent += " v1.0.6";
-// btns
+header.textContent += " v1.1.0";

@@ -26,6 +26,13 @@
 - hundling data pipline flow and rendring order
 - creating login pop up 
 - checking if the input is valid 
+## 19th day:
+- i missed loggin this day but i added tebex API package rendring 
+## 20th day: 
+- this is the best day
+- i added 2 fetch requests to create basket
+- i verified the username using 404 respond
+- i redirected the user to tebex checkout when it's everything passes
 ## Parking lot (not today)
 - Event object, classList, dialog, ...
 ## cantenue :

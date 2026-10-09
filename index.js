@@ -15,6 +15,8 @@ const buyModalBtn = document.querySelector("#modal-buy-btn")
 const loginForm = document.querySelector("#login-form");
 const usernameInput = document.querySelector("#username-input");
 const loginContent = document.querySelector(".login-modal-content")
+const confirmLoginBtn = document.querySelector("#confirm-login-btn")
+let confirmText = confirmLoginBtn.textContent
 const loginError = document.createElement("p")
 loginError.classList.add("login-erorr")
 loginContent.appendChild(loginError)
@@ -37,8 +39,7 @@ async function checkFetch(){
             for (let i = 0;i < imagesrc.length; i++){
                 appdata.data[i].image = imagesrc[i]
             }
-            console.log(appdata)
-            renderPackages(appdata.data.filter(item => item.category.name === "Ranks"));
+            renderPackages(appdata.data.filter(item => item.category.name === "Ranks"))
         
         }else{
             section.innerHTML = "<p class='error-msg'>Failed to load packages. Please try again later.</p>";
@@ -65,7 +66,6 @@ function renderPackages(itemArray) {
 
         let images = document.createElement("img");
         images.src = itemArray[i].image;
-        console.log(itemArray[i].image)
 
         let btnContainer = document.createElement("div")
         btnContainer.classList.add("card-actions")
@@ -104,7 +104,7 @@ function renderPackages(itemArray) {
             document.querySelector("#modal-buy-btn").textContent = itemArray[i].price + "$";
             
             modal.showModal();
-            buyModalBtn.textContent = itemArray[i].price + "$"
+            buyModalBtn.textContent = itemArray[i].base_price + "$"
         });
     }
 }
@@ -137,9 +137,8 @@ loginModal.addEventListener("click", function(e) {
         e.clientX < dialogDimensions.left ||
         e.clientX > dialogDimensions.right ||
         e.clientY < dialogDimensions.top ||
-        e.clientY > dialogDimensions.bottom
+        e.clientY > dialogDimensions.bottom 
     ) {
-        loginModal.close();
         loginError.textContent = ""
         loginError.classList.remove("show");
     }
@@ -193,12 +192,76 @@ loginForm.addEventListener("submit", function(e) {
 
     currentUsername = enteredUsername;
     localStorage.setItem("mc_username", currentUsername);
-    
-    loginError.classList.remove("show"); 
-    loginModal.close();
+
 
     console.log(`Basket Payload -> Username: ${currentUsername} | Package ID: ${selectedPackageId}`);
+
+
+    async function postUsername(){
+        confirmLoginBtn.textContent = "Loading..."
+        try {
+            const postRespond = await fetch("https://headless.tebex.io/api/accounts/14s8d-f1ca42c72668b958cc37af87a9340635307e4cf6/baskets",{
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify({
+                    username : currentUsername,
+                    complete_url : window.location.origin,
+                    cancel_url : window.location.origin
+                })
+            })
+
+            if (!postRespond.ok) {
+                loginError.textContent = "username invalid"
+                confirmLoginBtn.textContent = confirmText
+                
+                loginError.classList.remove("show")
+
+                void loginError.offsetWidth;
+
+                loginError.classList.add("show")
+
+            }else{
+                const parsedPost = await postRespond.json() 
+                confirmLoginBtn.disabled = true
+                console.log(parsedPost)
+                console.log(postRespond.status)
+                addToBasket()
+                async function addToBasket(){
+                    const addRespond = await fetch(`https://headless.tebex.io/api/baskets/${parsedPost.data.ident}/packages`,{
+                        method : "POST",
+                        headers : {
+                            "Content-Type" : "application/json"
+                        },
+                        body : JSON.stringify({
+                            package_id : String(selectedPackageId),
+                            quantity : 1
+                        })
+                        
+                    })
+                    if (addRespond.ok){
+                        const paddRespond = await addRespond.json()
+                        console.log(paddRespond)
+                        window.location.href = paddRespond.data.links.checkout
+                    }else{
+                        loginError.classList.remove("show")
+                        loginError.classList.add("show")
+                        loginError.textContent = "Something went wrong pls try again"
+
+                    }
+                    
+                }
+
+            }
+        }catch (error){
+            console.log("ERROR XXX")
+        }
+    }
+    postUsername()
 });
+
+
 
 function openLogin() {
     loginModal.close()
@@ -208,4 +271,4 @@ function openLogin() {
     
 }
 
-header.textContent += " v1.1.0";
+header.textContent += " v1.2.0";

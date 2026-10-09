@@ -8,7 +8,7 @@
 | 4 | Category tabs filtering (Ranks, Keys, etc. using `filter` / functions) | DONE |
 | 5 | Package details modal/pop-up  |DONE|
 | 6 | Move data into `data.json` + `fetch` / `async-await` + loading/error states | DONE |
-| 7 | Responsive layout (mobile friendly) + deployment on Vercel/Netlify | WAIT|
-| 8 | Real Tebex Headless API integration (categories, packages, icons) |NEXT |
-| 9 | Real Tebex Checkout integration + player username verification | |
-| 10 | README, demo video, BuiltByBit listing, outreach & launching service | |
+| 7 | Responsive layout (mobile friendly) + deployment on Vercel/Netlify | DONE|
+| 8 | Real Tebex Headless API integration (categories, packages, icons) |DONE |
+| 9 | Real Tebex Checkout integration + player username verification |DONE |
+| 10 | README, demo video, BuiltByBit listing, outreach & launching service |IN PROGRESS |
